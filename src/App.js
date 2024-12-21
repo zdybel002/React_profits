@@ -14,7 +14,7 @@ const initinal_costs = [
   {
     data: new Date(2021, 6, 12),
     description: "miod",
-    amount: 50,
+    amount: 500,
   },
   {
     data: new Date(2019, 8, 11),
@@ -27,7 +27,7 @@ const initinal_costs = [
     amount: 3330,
   },
   {
-    data: new Date(2022, 10, 4),
+    data: new Date(2022, 9, 4),
     description: "Spodnie",
     amount: 100,
   },
