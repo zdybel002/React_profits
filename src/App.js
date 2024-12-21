@@ -1,7 +1,7 @@
 import React from "react";
 
 import NewCost from "./Components/NewCost/NewCost";
-import Cost from "./Components/Cost";
+import Cost from "./Components/Cost/Cost";
 
 import "./App.css";
 
