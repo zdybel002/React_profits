@@ -2,35 +2,38 @@ import "../Css/Cost.css";
 
 import CostItem from "./CostItem";
 import Card from "./Card";
-import CostFilter from "./CostFilter";
+import CostFilter from "../NewCost/CostFilter";
 import React, { useState } from "react";
 
 function Cost(props) {
-  const [valueYear, setValueYear] = useState("2019");
+  const [selectedYear, setSelectedYear] = useState("2019");
+
+  // const filtredCost = objectValue.filter(
+  //   (item) => item.data.getFullYear() === "2022"
+  // );
+
   const takeValueYear = (value) => {
-    setValueYear(value);
+    setSelectedYear(value);
     console.log("Cost " + value);
   };
+
+  const filteredCosts = props.costs.filter((cost) => {
+    return cost.data.getFullYear().toString() === selectedYear;
+  });
+
   return (
     <div>
-      {/*  */}
-      <CostFilter onChangeYear={takeValueYear} year={valueYear} />
       <Card className="costs">
-        <CostItem
-          data={props.costs[0].data}
-          description={props.costs[0].description}
-          amount={props.costs[0].amount}
-        ></CostItem>
-        <CostItem
-          data={props.costs[1].data}
-          description={props.costs[1].description}
-          amount={props.costs[1].amount}
-        ></CostItem>
-        <CostItem
-          data={props.costs[2].data}
-          description={props.costs[2].description}
-          amount={props.costs[2].amount}
-        ></CostItem>
+        <CostFilter onChangeYear={takeValueYear} year={selectedYear} />
+
+        {filteredCosts.map((cost, index) => (
+          <CostItem
+            data={cost.data}
+            description={cost.description}
+            amount={cost.amount}
+            key={index}
+          ></CostItem>
+        ))}
       </Card>
     </div>
   );
